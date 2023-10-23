@@ -14,9 +14,12 @@ golongan = input("Masukkan golongan kendaraan (1/2/3/4/5): ")
 masuk = input("Masukkan pintu masuk tol: ")
 keluar = input("Masukkan pintu keluar tol: ")
 
+in_journey = False
 for gerbang_tol in PINTU_TOL:
+    if in_journey:
+        total_tarif += 1500
     if gerbang_tol == masuk:
         total_tarif = TARIF_TOL[golongan]
+        in_journey = True
     if gerbang_tol == keluar:
         print(f"Total tarif Rp {total_tarif}")
-    total_tarif += 1500
