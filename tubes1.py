@@ -14,12 +14,14 @@ golongan = input("Masukkan golongan kendaraan (1/2/3/4/5): ")
 masuk = input("Masukkan pintu masuk tol: ")
 keluar = input("Masukkan pintu keluar tol: ")
 
-in_journey = False
-for gerbang_tol in PINTU_TOL:
-    if in_journey:
-        total_tarif += 1500
+total_tarif = TARIF_TOL[golongan]
+id_masuk = 0
+for count, gerbang_tol in enumerate(PINTU_TOL):
     if gerbang_tol == masuk:
-        total_tarif = TARIF_TOL[golongan]
-        in_journey = True
+        id_masuk = count
     if gerbang_tol == keluar:
-        print(f"Total tarif Rp {total_tarif}")
+        id_keluar = count
+
+total_tarif += abs(id_keluar-id_masuk) * TARIF_JOURNEY
+print(f"Total tarif Rp {total_tarif}")
+
